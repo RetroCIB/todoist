@@ -10,7 +10,10 @@ import AppMain from "@/components/AppMain";
 import AppHeader from "@/components/AppHeader";
 
 export default {
-    components: {AppHeader, AppMain}
+    components: {AppHeader, AppMain},
+    mounted(){
+        this.$store.commit('count');
+    }
 }
 </script>
 
