@@ -5,13 +5,8 @@
         <router-link to="/today">today</router-link>
         <router-link to="/upcoming">upcoming</router-link>
 
-
         <hr class="w-full border border-green-500 my-5"/>
-
-        <h3 class="text-xl font-bold">filters</h3>
-        <router-link to="/">x</router-link>
-
-
+        
         <h3 class="text-xl font-bold">labels</h3>
         <router-link to="/">x</router-link>
 

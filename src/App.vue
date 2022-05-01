@@ -2,6 +2,9 @@
   <div id="app">
       <app-header/>
       <app-main/>
+
+      <module-add-task/>
+
   </div>
 </template>
 
