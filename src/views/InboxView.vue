@@ -9,7 +9,14 @@
                     :class="[ 'bg-' + ( ['green', 'red', 'yellow', 'blue' ][item.priority]) + '-100']"
                 >
                     <p>{{ item.data}} : <span class="font-bold">{{ item.description }}</span></p>
-                    <p>{{ item.label }}</p>
+
+                    <p   class="flex justify-start items-center">
+                        <span class="rounded-full inline-block  border w-3 h-3 mr-2" :style="{
+                            background : '#' + labelById(item.label).color
+                        }"></span>
+                        <span>{{ labelById(item.label).name }}</span>
+                    </p>
+
                     <p>{{ item.priority }}</p>
                     <button class="button" @click="removeItem(item)">remove</button>
                 </div>

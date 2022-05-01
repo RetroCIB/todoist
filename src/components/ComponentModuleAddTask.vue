@@ -24,10 +24,11 @@
             <div class="mb-2">
                 <select class="w-full border border-gray-300" v-model="label">
                     <option value="0" disabled>no label</option>
-                    <option value="1">Label 1</option>
-                    <option value="1">Label 1</option>
-                    <option value="1">Label 1</option>
-                    <option value="1">Label 1</option>
+
+                    <template v-for="(value_label, idx_label) in labels">
+                        <option :value="value_label.id" :key="idx_label" :style="{backgroundColor: '#' + value_label.color }">Label {{ value_label.name }}</option>
+                    </template>
+
                 </select>
             </div>
 
@@ -40,9 +41,6 @@
                     <option value="3">priority 3</option>
                 </select>
             </div>
-
-
-
 
             <!--  actions -->
             <div class="mb-2 mt-6">
@@ -57,8 +55,12 @@
 </template>
 
 <script>
+import ComputedMixins from "@/mixins/ComputedMixins";
+
 export default {
     name: "ComponentModuleAddTask",
+
+    mixins:[ComputedMixins],
     data() {
         return {
             description: '',
@@ -67,6 +69,7 @@ export default {
             priority:0,
         }
     },
+
     methods: {
         clear() {
             this.description = '';

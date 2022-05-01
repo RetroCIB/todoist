@@ -17,7 +17,7 @@
             </div>
             <!-- -->
             <div class="mb-2">
-                <select class="w-full border border-gray-300" v-model="color"> 
+                <select class="w-full border border-gray-300" v-model="color">
                     <template v-for="(color, idx_color) in colors">
                         <option :value="color.color" :style="{
                             backgroundColor: '#' + color.color
@@ -48,8 +48,7 @@ export default {
     data() {
         return {
             name: '',
-            color: 0,
-
+            color: 'FFFFFF',
 
             colors: [
                 {name: 'Black', color: '000000'},
@@ -80,7 +79,7 @@ export default {
     methods: {
         clear() {
             this.name = '';
-            this.color = '';
+            this.color = 'FFFFFF';
         },
         show() {
             this.$el.classList.remove('hidden');
