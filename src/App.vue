@@ -4,6 +4,7 @@
       <app-main/>
 
       <module-add-task/>
+      <module-add-label/>
 
   </div>
 </template>

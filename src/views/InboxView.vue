@@ -25,14 +25,11 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+
+import ComputedMixins from "@/mixins/ComputedMixins";
 
 export default {
-    computed: {
-        ...mapGetters([
-            'items',
-        ])
-    },
+    mixins: [ ComputedMixins],
     methods: {
         removeItem(item) {
             this.$store.commit('removeItem', item);

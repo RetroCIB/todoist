@@ -6,9 +6,22 @@
         <router-link to="/upcoming">upcoming</router-link>
 
         <hr class="w-full border border-green-500 my-5"/>
-        
+
+        <!-- labels -->
         <h3 class="text-xl font-bold">labels</h3>
-        <router-link to="/">x</router-link>
+        <button @click="$eventBus.$emit('module-add-label:show')">+add label</button>
+        <ul v-if="labels.length">
+            <template v-for="(label, idx_label) in labels">
+                <li   class="flex justify-start items-center">
+                    <span class="rounded-full inline-block  border w-3 h-3 mr-2" :style="{
+                        background : '#' + label.color
+                    }"></span>
+                    <span>{{ label.name }}</span>
+                </li>
+            </template>
+
+        </ul>
+
 
         <hr class="w-full border border-green-500 my-5"/>
 
@@ -23,8 +36,12 @@
 </template>
 
 <script>
+import ComputedMixins from "@/mixins/ComputedMixins";
+
 export default {
-    name: "SectionMenu"
+    name: "SectionMenu",
+    mixins: [ComputedMixins],
+
 }
 </script>
 

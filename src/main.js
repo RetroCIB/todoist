@@ -11,6 +11,7 @@ Vue.config.productionTip = false
 
 Vue.component('ButtonAddTask', require('./components/ComponentButtonAddTask').default);
 Vue.component('ModuleAddTask', require('./components/ComponentModuleAddTask').default);
+Vue.component('ModuleAddLabel', require('./components/ComponentModuleAddLabel').default);
 
 Vue.prototype.$eventBus = window.$eventBus = new Vue();
 

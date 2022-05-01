@@ -47,6 +47,10 @@ export default new Vuex.Store({
         removeItem(state, payload) {
             state.items = [ ...state.items.filter(item=>payload.id !== item.id)];
         },
+        //
+        addLabel(state, payload) {
+            state.labels.push(payload);
+        },
     },
     actions: {},
     modules: {},
