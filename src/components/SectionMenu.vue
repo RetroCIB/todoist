@@ -36,12 +36,6 @@
             </template>
         </ul>
 
-        <!-- -->
-        <hr class="w-full border border-green-500 my-5"/>
-
-        <!-- -->
-        <router-link to="/">home</router-link>
-        <router-link to="/about">about</router-link>
     </section>
 </template>
 

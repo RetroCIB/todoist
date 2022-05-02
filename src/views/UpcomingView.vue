@@ -1,10 +1,10 @@
 <template>
     <div class="about">
-        <h2 class="text-2xl mb-2">Inbox</h2>
+        <h2 class="text-2xl mb-2">Upcoming</h2>
         <button-add-task class="mb-6"/>
 
-        <template v-if="inboxTasks.length">
-            <template v-for="(item, idx_item) in inboxTasks">
+        <template v-if="upcomingTasks.length">
+            <template v-for="(item, idx_item) in upcomingTasks">
                 <div :key="idx_item" class="mb-2 px-3 py-2 flex justify-between"
                      :class="[ 'bg-' + ( ['green', 'red', 'yellow', 'blue' ][item.priority]) + '-100']"
                 >

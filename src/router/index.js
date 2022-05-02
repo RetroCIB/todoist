@@ -25,6 +25,16 @@ const routes = [
     path: '/inbox',
     name: 'inbox',
     component: require('./../views/InboxView').default,
+  },
+  {
+    path: '/today',
+    name: 'today',
+    component: require('./../views/TodayView').default,
+  },
+  {
+    path: '/upcoming',
+    name: 'upcoming',
+    component: require('./../views/UpcomingView').default,
   }
 ]
 
