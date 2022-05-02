@@ -1,7 +1,7 @@
 <template>
     <div class="about">
-        <h2 class="text-2xl mb-2">Label : <strong>{{ labelById(id_label).name }}</strong></h2>
-        <button-add-task class="mb-6"/>
+        <h2 class="text-2xl mb-6">Label : <strong>{{ labelById(id_label).name }}</strong></h2>
+
         <template v-if="itemsByLabelId(id_label).length">
             <template v-for="(item, idx_item) in  itemsByLabelId(id_label) ">
                 <div :key="idx_item" class="mb-2 px-3 py-2 flex justify-between"

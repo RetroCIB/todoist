@@ -1,7 +1,6 @@
 <template>
     <div class="about">
-        <h2 class="text-2xl mb-2">Today</h2>
-        <button-add-task class="mb-6"/>
+        <h2 class="text-2xl mb-6">Today</h2>
 
         <template v-if="todayTasks.length">
             <template v-for="(item, idx_item) in todayTasks">

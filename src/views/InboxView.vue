@@ -1,7 +1,6 @@
 <template>
     <div class="about">
-        <h2 class="text-2xl mb-2">Inbox</h2>
-        <button-add-task class="mb-6"/>
+        <h2 class="text-2xl mb-6">Inbox</h2>
 
         <template v-if="inboxTasks.length">
             <template v-for="(item, idx_item) in inboxTasks">
