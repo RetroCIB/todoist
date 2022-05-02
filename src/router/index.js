@@ -35,7 +35,15 @@ const routes = [
     path: '/upcoming',
     name: 'upcoming',
     component: require('./../views/UpcomingView').default,
-  }
+  },
+
+
+  {
+    path: '/project/:id_project',
+    name: 'project',
+    component: require('./../views/ProjectView').default,
+    props:true,
+  },
 ]
 
 const router = new VueRouter({

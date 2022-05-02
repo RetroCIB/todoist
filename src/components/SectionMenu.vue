@@ -31,7 +31,9 @@
         <ul v-if="projects.length" class="w-full overflow-auto mt-4" style="max-height:150px">
             <template v-for="(project, idx_project) in projects">
                 <li class="flex justify-start items-center">
-                    <span>{{ project.name }}</span>
+                    <router-link :to="{ name : 'project', params: { id_project: project.id }}">
+                        <span>{{ project.name }}</span>
+                    </router-link>
                 </li>
             </template>
         </ul>
