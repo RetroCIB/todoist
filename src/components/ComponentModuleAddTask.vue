@@ -9,7 +9,8 @@
         <div id="module-content" class="relative block bg-white text-gray-800 pt-8 pb-5 px-3">
             <button @click="$eventBus.$emit('module-add-task:hide')" class="absolute top-1 right-1">close</button>
 
-            <h2 class="text-2xl mb-10">Add Task</h2>
+            <h2 v-if="!edit_in_progress" class="text-2xl mb-10">Add Task</h2>
+            <h2 v-else class="text-2xl mb-10">Update Task</h2>
 
             <!-- -->
             <div class="mb-2">
@@ -59,7 +60,8 @@
                 <button @click="clear" class="button">clear</button>
             </div>
             <div>
-                <button @click="addItem" class="button">add</button>
+                <button v-if="!edit_in_progress" @click="addItem" class="button">add</button>
+                <button v-else @click="updateItem" class="button">update</button>
             </div>
         </div>
 
@@ -75,11 +77,15 @@ export default {
     mixins: [ComputedMixins],
     data() {
         return {
+            id: '',
+
             description: '',
             data: '',
             id_label: 0,
             priority: 0,
             id_project: 0,
+
+            edit_in_progress: false,
         }
     },
 
@@ -90,8 +96,22 @@ export default {
             this.id_label = 0;
             this.priority = 0;
             this.id_project = 0;
+            this.edit_in_progress = false;
+            this.id = null;
         },
-        show() {
+        show(item) {
+            const vm = this;
+            if(item){
+                vm.edit_in_progress = true;
+
+                vm.id = item.id;
+                vm.description = item.description;
+                vm.data = item.data;
+                vm.id_label = item.id_label;
+                vm.priority = item.priority;
+                vm.id_project = item.id_project;
+            }
+
             this.$el.classList.remove('hidden');
             this.$el.classList.add('fixed');
         },
@@ -104,6 +124,18 @@ export default {
             const vm = this;
             this.$store.commit('addItem', {
                 id: Date.now(),
+                description: vm.description,
+                data: vm.data,
+                id_label: vm.id_label,
+                priority: vm.priority,
+                id_project: vm.id_project,
+            });
+            this.hide();
+        },
+        updateItem() {
+            const vm = this;
+            this.$store.commit('updateItem', {
+                id: vm.id,
                 description: vm.description,
                 data: vm.data,
                 id_label: vm.id_label,

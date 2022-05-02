@@ -26,26 +26,26 @@ export default new Vuex.Store({
         },
         //
         labelById: (state) => (id) => {
-                let label = state.labels.filter(label => label.id === id);
-                return label.length ? label[0] : null;
+            let label = state.labels.filter(label => label.id === id);
+            return label.length ? label[0] : null;
         },
         //
         projectById: (state) => (id) => {
-                let project = state.projects.filter(project => project.id === id);
-                return project.length ? project[0] : null;
+            let project = state.projects.filter(project => project.id === id);
+            return project.length ? project[0] : null;
         },
         //
         itemsByProjectId: (state) => (id) => {
-                let items = state.items.filter(item =>{
-                    return item.id_project === id
-                });
-                return items.length ? items : [];
+            let items = state.items.filter(item => {
+                return item.id_project === id
+            });
+            return items.length ? items : [];
         },
         itemsByLabelId: (state) => (id) => {
-                let items = state.items.filter(item =>{
-                    return item.id_label === id
-                });
-                return items.length ? items : [];
+            let items = state.items.filter(item => {
+                return item.id_label === id
+            });
+            return items.length ? items : [];
         },
     },
     mutations: {
@@ -68,7 +68,13 @@ export default new Vuex.Store({
             state.items.push(payload);
         },
         removeItem(state, payload) {
-            state.items = [ ...state.items.filter(item=>payload.id !== item.id)];
+            state.items = [...state.items.filter(item => payload.id !== item.id)];
+        },
+        updateItem(state, payload) {
+            state.items = [...state.items.map(item => {
+                return (payload.id === item.id) ? payload : item;
+            })];
+
         },
         //
         addLabel(state, payload) {

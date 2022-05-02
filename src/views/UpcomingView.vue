@@ -4,31 +4,11 @@
 
         <template v-if="upcomingTasks.length">
             <template v-for="(item, idx_item) in upcomingTasks">
-                <div :key="idx_item" class="mb-2 px-3 py-2 flex justify-between"
-                     :class="[ 'bg-' + ( ['green', 'red', 'yellow', 'blue' ][item.priority]) + '-100']"
-                >
-
-                    <div>
-                        <p>{{ item.data }} : <span class="font-bold">{{ item.description }}</span></p>
-
-                        <p class="flex justify-start items-center italic text-sm">
-                        <span class="rounded-full inline-block  border w-3 h-3 mr-2" :style="{
-                            background : '#' + labelById(item.id_label).color
-                        }"></span>
-                            <span>{{ labelById(item.id_label).name }}</span>
-                        </p>
-                        <!-- <p class="italic text-xs">Priority level {{ item.priority }}</p>-->
-                    </div>
-                    <div>
-                        <p>{{ projectById(item.id_project).name }}</p>
-                        <button class="button" @click="removeItem(item)">remove</button>
-                    </div>
-
-                </div>
+                <ComponentTaskBox :key="idx_item" :item="item"/>
             </template>
         </template>
         <template v-else>
-            no items!
+            no tasks!
         </template>
 
 
@@ -38,9 +18,11 @@
 <script>
 
 import ComputedMixins from "@/mixins/ComputedMixins";
+import ComponentTaskBox from "@/components/ComponentTaskBox";
 
 export default {
     mixins: [ComputedMixins],
+    components: {ComponentTaskBox},
     methods: {
         removeItem(item) {
             this.$store.commit('removeItem', item);
