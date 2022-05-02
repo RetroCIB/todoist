@@ -1,13 +1,14 @@
 <script>
 import {mapGetters} from "vuex";
 
-export default{
+export default {
     computed: {
         ...mapGetters([
             'items',
             'labels',
             'projects',
-                'labelById',
+            'labelById',
+            'projectById',
         ])
     },
 }

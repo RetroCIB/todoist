@@ -5,27 +5,32 @@
 
         <template v-if="items.length">
             <template v-for="(item, idx_item) in items">
-                <div :key="idx_item" class="mb-2 px-3 py-2"
-                    :class="[ 'bg-' + ( ['green', 'red', 'yellow', 'blue' ][item.priority]) + '-100']"
+                <div :key="idx_item" class="mb-2 px-3 py-2 flex justify-between"
+                     :class="[ 'bg-' + ( ['green', 'red', 'yellow', 'blue' ][item.priority]) + '-100']"
                 >
-                    <p>{{ item.data}} : <span class="font-bold">{{ item.description }}</span></p>
 
-                    <p   class="flex justify-start items-center">
+                    <div>
+                        <p>{{ item.data }} : <span class="font-bold">{{ item.description }}</span></p>
+
+                        <p class="flex justify-start items-center italic text-sm">
                         <span class="rounded-full inline-block  border w-3 h-3 mr-2" :style="{
-                            background : '#' + labelById(item.label).color
+                            background : '#' + labelById(item.id_label).color
                         }"></span>
-                        <span>{{ labelById(item.label).name }}</span>
-                    </p>
+                            <span>{{ labelById(item.id_label).name }}</span>
+                        </p>
+                        <!-- <p class="italic text-xs">Priority level {{ item.priority }}</p>-->
+                    </div>
+                    <div>
+                        <p>{{ projectById(item.id_project).name }}</p>
+                        <button class="button" @click="removeItem(item)">remove</button>
+                    </div>
 
-                    <p>{{ item.priority }}</p>
-                    <button class="button" @click="removeItem(item)">remove</button>
                 </div>
             </template>
         </template>
         <template v-else>
             no items!
         </template>
-
 
 
     </div>
@@ -36,7 +41,7 @@
 import ComputedMixins from "@/mixins/ComputedMixins";
 
 export default {
-    mixins: [ ComputedMixins],
+    mixins: [ComputedMixins],
     methods: {
         removeItem(item) {
             this.$store.commit('removeItem', item);

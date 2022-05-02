@@ -22,11 +22,13 @@
             </div>
             <!-- -->
             <div class="mb-2">
-                <select class="w-full border border-gray-300" v-model="label">
+                <select class="w-full border border-gray-300" v-model="id_label">
                     <option value="0" disabled>no label</option>
 
                     <template v-for="(value_label, idx_label) in labels">
-                        <option :value="value_label.id" :key="idx_label" :style="{backgroundColor: '#' + value_label.color }">Label {{ value_label.name }}</option>
+                        <option :value="value_label.id" :key="idx_label"
+                                :style="{backgroundColor: '#' + value_label.color }">Label {{ value_label.name }}
+                        </option>
                     </template>
 
                 </select>
@@ -39,6 +41,16 @@
                     <option value="1">priority 1</option>
                     <option value="2">priority 2</option>
                     <option value="3">priority 3</option>
+                </select>
+            </div>
+
+            <!-- -->
+            <div class="mb-2">
+                <select class="w-full border border-gray-300" v-model="id_project">
+                    <option value="0" disabled>no project</option>
+                    <template v-for="(value_project, idx_project) in projects">
+                        <option :value="value_project.id" :key="idx_project">{{ value_project.name }}</option>
+                    </template>
                 </select>
             </div>
 
@@ -60,13 +72,14 @@ import ComputedMixins from "@/mixins/ComputedMixins";
 export default {
     name: "ComponentModuleAddTask",
 
-    mixins:[ComputedMixins],
+    mixins: [ComputedMixins],
     data() {
         return {
             description: '',
             data: '',
-            label: 0,
-            priority:0,
+            id_label: 0,
+            priority: 0,
+            id_project: 0,
         }
     },
 
@@ -74,8 +87,9 @@ export default {
         clear() {
             this.description = '';
             this.data = '';
-            this.label = 0;
+            this.id_label = 0;
             this.priority = 0;
+            this.id_project = 0;
         },
         show() {
             this.$el.classList.remove('hidden');
@@ -90,10 +104,11 @@ export default {
             const vm = this;
             this.$store.commit('addItem', {
                 id: Date.now(),
-                description : vm.description,
+                description: vm.description,
                 data: vm.data,
-                label: vm.label,
+                id_label: vm.id_label,
                 priority: vm.priority,
+                id_project: vm.id_project,
             });
             this.hide();
         }
