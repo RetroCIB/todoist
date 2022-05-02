@@ -41,6 +41,12 @@ export default new Vuex.Store({
                 });
                 return items.length ? items : [];
         },
+        itemsByLabelId: (state) => (id) => {
+                let items = state.items.filter(item =>{
+                    return item.id_label === id
+                });
+                return items.length ? items : [];
+        },
     },
     mutations: {
         count(state) {

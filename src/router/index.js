@@ -44,6 +44,12 @@ const routes = [
     component: require('./../views/ProjectView').default,
     props:true,
   },
+  {
+    path: '/label/:id_label',
+    name: 'label',
+    component: require('./../views/LabelView').default,
+    props:true,
+  },
 ]
 
 const router = new VueRouter({

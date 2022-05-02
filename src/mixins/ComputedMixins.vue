@@ -12,6 +12,7 @@ export default {
             'labelById',
             'projectById',
             'itemsByProjectId',
+            'itemsByLabelId',
         ]),
         inboxTasks() {
             let tasks = this.items.filter(task => {
