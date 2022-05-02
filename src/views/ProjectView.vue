@@ -1,6 +1,6 @@
 <template>
     <div class="about">
-        <h2 class="text-2xl mb-2">Project</h2>
+        <h2 class="text-2xl mb-2">Project : <strong>{{ projectById(id_project).name }}</strong></h2>
         <button-add-task class="mb-6"/>
         <template v-if="itemsByProjectId(id_project).length">
             <template v-for="(item, idx_item) in  itemsByProjectId(id_project) ">
