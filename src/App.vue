@@ -5,6 +5,7 @@
 
       <module-add-task/>
       <module-add-label/>
+      <module-add-project/>
 
   </div>
 </template>

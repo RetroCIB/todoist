@@ -56,6 +56,10 @@ export default new Vuex.Store({
         addLabel(state, payload) {
             state.labels.push(payload);
         },
+        //
+        addProject(state, payload) {
+            state.projects.push(payload);
+        },
     },
     actions: {},
     modules: {},
